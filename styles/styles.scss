@@ -1,10 +1,15 @@
-@use 'sass:color';
 @import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
 
-$black-twenty-five-percent: rgba(
-    $color: black,
-    $alpha: 0.25,
-);
+// Variables
+$gray: #f6f6f6;
+$black-twenty-five-percent: rgba(0, 0, 0, 0.25);
+$violet: #9356dc;
+$rose: #ff79da;
+$blue: #89C8FA;
+$blue-2: #003A68;
+$green: #99E2D0;
+$green-font: #008766;
+
 
 * {
     box-sizing: border-box;
@@ -13,9 +18,12 @@ $black-twenty-five-percent: rgba(
 }
 
 body {
-    max-width: 1440px;
     font-family: "Roboto";
-    background-color: #f6f6f6;
+    background-color: $gray;
+}
+
+.section-title {
+    font-size: 1.5em;
 }
 
 .btn-cta {
@@ -24,12 +32,14 @@ body {
     font-weight: 500;
     padding: 1em;
     border-radius: 25px;
-    background: linear-gradient(0deg, #9356dc -11.44%, #ff79da 123.93%);
+    background: linear-gradient(0deg, $violet -11.44%, $rose 123.93%);
     box-shadow: 0px 4px 10px 0px $black-twenty-five-percent;
-    transition: filter .3s ease-out;
+    transition: all 0.3s ease-out;
+
     &:hover {
-        filter: brightness(1.15);
-        transition: filter .2s ease-out;
+        box-shadow: 0px 4px 15px 0px #00000059;
+        filter: brightness(115%);
+        transition: all 0.2s ease-out;
     }
 }
 
@@ -39,6 +49,7 @@ header {
     align-items: center;
     justify-content: center;
     width: 100vw;
+
     .banner {
         display: flex;
         position: relative;
@@ -47,12 +58,14 @@ header {
         flex-direction: column;
         width: 100%;
         padding: 1em 1em;
+
         &:nth-of-type(1) {
             background-color: white;
             width: 100%;
             box-shadow: 0px 2px 4px 0px $black-twenty-five-percent;
             z-index: 1;
         }
+
         &:nth-of-type(2) {
             display: flex;
             flex-direction: row;
@@ -66,6 +79,10 @@ header {
 
 main {
     padding-block: 5%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
     .intro {
         width: 100%;
         padding: 1em 1.5em;
@@ -78,6 +95,171 @@ main {
         .title,
         .text-body {
             text-align: center;
+        }
+
+        .text-body {
+            font-weight: 300;
+            font-size: 1.125em;
+        }
+    }
+
+    .how-work {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background-color: white;
+        padding-block: 3em;
+        gap: 1em;
+
+        .section-title {
+            padding-inline: 1.25em;
+            align-self: start;
+        }
+
+        .steps-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5em;
+            justify-content: center;
+
+            .icon-text-container {
+                position: relative;
+                width: 90%;
+                display: flex;
+                gap: 1em;
+                padding: 1.5em;
+                background-color: $gray;
+                border-radius: 20px;
+                align-items: center;
+                box-shadow: 0px 4px 15px 0px #00000026;
+
+                i {
+                    padding: 0.25em;
+                }
+
+                &::before {
+                    position: absolute;
+                    left: 0;
+                    top: 50%;
+                    transform: translate(-50%, -50%);
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    background-color: $violet;
+                    height: 24px;
+                    width: 24px;
+                    border-radius: 50px;
+                    color: white;
+                    z-index: 1;
+                }
+                @for $i from 1 to 4 {
+                    &:nth-of-type(#{$i})::before {
+                        content: "#{$i}";
+                    }
+                }
+            }
+        }
+    }
+
+    #restaurants {
+        display: flex;
+        flex-direction: column;
+        padding-block: 3.375em;
+        padding-inline: 1.25em;
+
+        .section-title {
+            margin-bottom: 1em;
+        }
+
+        .restaurants-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            
+            .restaurant {
+                display: flex;
+                flex-direction: column;
+                width: 100%;
+                height: max-content;
+                background-color: white;
+                border-radius: 15px;
+                
+                .img-content {
+                    position: relative;
+                    height: 30vh;
+                    width: 100%;
+                    border-radius: 15px 15px 0 0;
+                    background: url("../images/restaurants/jay-wennington-N_Y88TWmGwA-unsplash.jpg") no-repeat center center / cover;
+
+                    .badge {
+                        position: absolute;
+                        top: 5%;
+                        right: 5%;
+                        background-color: $green;
+                        color: $green-font;
+                        padding: 7px 10px;
+                        border-radius: 2px;
+                    }
+                }
+
+                .description {
+                    display: flex;
+                    justify-content: space-between;
+                    padding-block: 1em;
+                    padding-left: 1em;
+                    padding-right: 1.5em;
+
+                    .restaurant-content {
+                        display: flex;
+                        flex-direction: column;
+
+                        p {
+                            margin-top: 5px;
+                            font-weight: 300;
+                            font-size: 1em;
+                        }
+                    }
+
+                    .btn-liked-container {
+                        display: flex;
+                        flex-direction: column;
+                        position: relative;
+
+                        .icon-react {
+                            position: absolute;
+                            top: 50%;
+                            left: 0;
+                            transform: translate(-50%, -50%) scale(1);
+                            border: none;
+                            background: linear-gradient(193.33deg, #9356DC -11.44%, #FF79DA 123.93%);
+                            background-clip: text;
+                            -webkit-background-clip: text;
+                            -webkit-text-fill-color: linear-gradient(193.33deg, #9356DC -11.44%, #FF79DA 123.93%);
+                            transition: all .2s ease-out;
+
+                            &:hover {
+                                transform: translate(-50%, -50%) scale(1.1);
+                                cursor: pointer;
+                                transition: all .2s ease-out;
+    
+                            }
+
+                            &:nth-of-type(1) {
+                                z-index: 2;
+
+                                &:active {
+                                    z-index: 0;
+                                }
+                            }
+
+                            &:nth-of-type(2) {
+                                z-index: 1;
+                                
+                            }
+                        }
+                    }
+                }
+            }
         }
     }
 }
