@@ -1,3 +1,4 @@
+@use "sass:map";
 @import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
 
 // Variables
@@ -9,6 +10,14 @@ $blue: #89C8FA;
 $blue-2: #003A68;
 $green: #99E2D0;
 $green-font: #008766;
+
+// Array img + ids
+$restaurants: (
+    "la-palette-du-gout": "../images/restaurants/jay-wennington-N_Y88TWmGwA-unsplash.jpg", 
+    "la-note-enchantee": "../images/restaurants/stil-u2Lp8tXIcjw-unsplash.jpg", 
+    "a-la-francaise": "../images/restaurants/toa-heftiba-DQKerTsQwi0-unsplash.jpg", 
+    "le-delice-des-sens": "../images/restaurants/louis-hansel-shotsoflouis-qNBGVyOCY8Q-unsplash.jpg"
+);
 
 
 * {
@@ -189,8 +198,6 @@ main {
                     height: 30vh;
                     width: 100%;
                     border-radius: 15px 15px 0 0;
-                    background: url("../images/restaurants/jay-wennington-N_Y88TWmGwA-unsplash.jpg") no-repeat center center / cover;
-
                     .badge {
                         position: absolute;
                         top: 5%;
@@ -199,6 +206,12 @@ main {
                         color: $green-font;
                         padding: 7px 10px;
                         border-radius: 2px;
+                    }
+                }
+
+                @each $name, $url in $restaurants {
+                    ##{$name} {
+                        background: url("#{$url}") no-repeat center center / cover;
                     }
                 }
 
@@ -237,24 +250,28 @@ main {
                             -webkit-text-fill-color: linear-gradient(193.33deg, #9356DC -11.44%, #FF79DA 123.93%);
                             transition: all .2s ease-out;
 
-                            &:hover {
+                            &:active {
                                 transform: translate(-50%, -50%) scale(1.1);
                                 cursor: pointer;
                                 transition: all .2s ease-out;
-    
                             }
-
-                            &:nth-of-type(1) {
-                                z-index: 2;
-
-                                &:active {
-                                    z-index: 0;
-                                }
+                            #toggle {
+                                display: none;
+                                height: max-content;
                             }
-
-                            &:nth-of-type(2) {
-                                z-index: 1;
-                                
+                        
+                            label {
+                                cursor: pointer;
+                                display: inline-block;
+                            }
+                        
+                            #toggle:not(:checked) + label svg path {
+                                fill: url(#grad1);
+                            }
+                        
+                            #toggle:checked + label svg path {
+                                fill: url(#grad2);
+                                stroke: none;
                             }
                         }
                     }
