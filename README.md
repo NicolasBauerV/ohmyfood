@@ -2,4 +2,4 @@
 
 Execute this command to build the css file :
 
-sass --watch styles/styles.scss build/styles.css
+sass --watch styles/homepage.scss build/homepage.css
