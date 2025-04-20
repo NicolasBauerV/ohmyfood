@@ -1,0 +1,131 @@
+// Font
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&family=Shrikhand&display=swap');
+
+//Variables
+$gray: #f6f6f6;
+$green: #99e2d0;
+
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    font-family: "Roboto";
+    background-color: $gray;
+}
+
+header {
+    display: flex;
+    align-items: center;
+    width: 100vw;
+    padding: 13px 1em 0 1em;
+
+    svg {
+        margin: 0 auto;
+    }
+}
+
+main {
+    .hero {
+        height: 275px;
+        width: 100%;
+        background: url("../images/restaurants/jay-wennington-N_Y88TWmGwA-unsplash.jpg") no-repeat center center / 100%;
+    }
+
+    .menu-card {
+        margin-top: -5em;
+        background-color: $gray;
+        border-radius: 30px 30px 0 0;
+
+        header {
+            font-family: "Shrikhand";
+            font-size: .8em;
+            position: relative;
+            padding-inline: 1.063em;
+            justify-content: space-between;
+            padding-top: 2em;
+
+
+            .btn-liked-container {
+                display: flex;
+                flex-direction: column;
+                height: max-content;
+                padding-right: 2.75em;
+                .icon-react {
+                    border: none;
+                    background: linear-gradient(
+                        193.33deg,
+                        #9356dc -11.44%,
+                        #ff79da 123.93%
+                    );
+                    background-clip: text;
+                    -webkit-background-clip: text;
+                    -webkit-text-fill-color: linear-gradient(
+                        193.33deg,
+                        #9356dc -11.44%,
+                        #ff79da 123.93%
+                    );
+                    transition: all 0.2s ease-out;
+    
+                    &:active {
+                        transform: translate(-50%, -50%) scale(1.1);
+                        cursor: pointer;
+                        transition: all 0.2s ease-out;
+                    }
+    
+                    label {
+                        cursor: pointer;
+                        display: inline-block;
+    
+                        input[type="checkbox"] {
+                            display: none;
+                            height: max-content;
+    
+                            &:not(:checked) + svg path {
+                                fill: url(#grad1);
+                            }
+                            &:checked + svg path {
+                                fill: url(#grad2);
+                                stroke: none;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        .menu-starter-container {
+            margin-top: 2.5em;
+            padding-inline: 13px;
+            .title {
+                position: relative;
+                font-size: 1em;
+                font-weight: 300;
+                text-transform: uppercase;
+
+                &::after {
+                    position: absolute;
+                    content: "";
+                    width: 40px;
+                    background-color: $green;
+                    height: 3px;
+                    bottom: -10px;
+                    left: 0;
+                }
+            }
+            .menu-starter-card {
+                margin-top: 1em;
+                background-color: white;
+                display: flex;
+                flex-flow: column wrap;
+
+                .article-card-title {
+                    font-weight: 500;
+                    font-family: 1.125em;
+                }
+            }
+        }
+    }
+}
