@@ -92,12 +92,6 @@ main {
                         #ff79da 123.93%
                     );
                     background-clip: text;
-                    -webkit-background-clip: text;
-                    -webkit-text-fill-color: linear-gradient(
-                        193.33deg,
-                        #9356dc -11.44%,
-                        #ff79da 123.93%
-                    );
                     transition: all 0.2s ease-out;
 
                     &:active {
@@ -171,7 +165,7 @@ main {
 
             .article-card-title {
                 font-weight: 500;
-                font-family: 1.125em;
+                font-size: 1.125em;
                 overflow: hidden;
                 white-space: nowrap;
                 text-overflow: ellipsis;
